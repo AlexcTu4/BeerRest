@@ -11,7 +11,40 @@ class ContactsController extends Controller
 {
     public function index()
     {
-        return Contacts::all();
+        return [
+            'info' => [
+                [
+                    'key' => 'first_name',
+                    'label'=> 'Имя'
+                ],
+                [
+                    'key' => 'last_name',
+                    'label'=> 'Фамилия'
+                ],
+                [
+                    'key' => 'patronymic',
+                    'label'=> 'Отчество'
+                ],
+                [
+                    'key' => 'phone',
+                    'label'=> 'Телефон'
+                ],
+                [
+                    'key' => 'company',
+                    'label'=> 'Компания'
+                ],
+                [
+                    'key' => 'post',
+                    'label'=> 'Должность'
+                ],
+                [
+                    'key' => 'description',
+                    'label'=> 'Описание'
+                ],
+            ],
+            'data' => Contacts::all()
+        ];
+
     }
 
 
