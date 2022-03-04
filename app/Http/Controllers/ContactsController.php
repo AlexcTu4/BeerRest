@@ -37,10 +37,6 @@ class ContactsController extends Controller
                     'key' => 'post',
                     'label'=> 'Должность'
                 ],
-                [
-                    'key' => 'description',
-                    'label'=> 'Описание'
-                ],
             ],
             'data' => Contacts::all()
         ];
