@@ -13,7 +13,7 @@ class ContactsRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,24 +24,21 @@ class ContactsRequest extends FormRequest
     public function rules()
     {
         $rules = [
+
             'first_name' => 'required|string',
             'last_name' => 'required|string',
+            'patronymic'=> 'required|string',
             'phone' => 'required|string',
             'company' => 'required|string',
             'post' => 'required|string',
+            'description' => ''
         ];
         switch ($this->getMethod())
         {
             case 'POST':
                 return $rules;
-//            case 'PUT':
-//                return [
-//                        'game_id' => 'required|integer|exists:games,id', //должен существовать. Можно вот так: unique:games,id,' . $this->route('game'),
-//                        'title' => [
-//                            'required',
-//                            Rule::unique('games')->ignore($this->title, 'title') //должен быть уникальным, за исключением себя же
-//                        ]
-//                    ] + $rules; // и берем все остальные правила
+            case 'PUT':
+                return ['id' => 'required|exists:contacts,id'] + $rules;
             // case 'PATCH':
             case 'DELETE':
                 return [

@@ -14,28 +14,39 @@ class ContactsController extends Controller
         return [
             'info' => [
                 [
+                    'key' => 'id',
+                    'label'=> 'ID',
+                    'editable'=> false
+                ],
+                [
                     'key' => 'first_name',
-                    'label'=> 'Имя'
+                    'label'=> 'Имя',
+                    'editable'=> true
                 ],
                 [
                     'key' => 'last_name',
-                    'label'=> 'Фамилия'
+                    'label'=> 'Фамилия',
+                    'editable'=> true
                 ],
                 [
                     'key' => 'patronymic',
-                    'label'=> 'Отчество'
+                    'label'=> 'Отчество',
+                    'editable'=> true
                 ],
                 [
                     'key' => 'phone',
-                    'label'=> 'Телефон'
+                    'label'=> 'Телефон',
+                    'editable'=> true
                 ],
                 [
                     'key' => 'company',
-                    'label'=> 'Компания'
+                    'label'=> 'Компания',
+                    'editable'=> true
                 ],
                 [
                     'key' => 'post',
-                    'label'=> 'Должность'
+                    'label'=> 'Должность',
+                    'editable'=> true
                 ],
             ],
             'data' => Contacts::all()
