@@ -30,6 +30,7 @@ class ContactsController extends Controller
 
 
 
+
     public function update(ContactsRequest $request, $id)
     {
         $game = Contacts::findOrFail($id);
