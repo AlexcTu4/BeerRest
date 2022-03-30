@@ -28,6 +28,7 @@ class ContactsRequest extends FormRequest
             'first_name' => 'required|string',
             'last_name' => 'required|string',
             'patronymic'=> 'required|string',
+            'email' => 'required|string',
             'phone' => 'required|string',
             'company' => 'required|string',
             'post' => 'required|string',

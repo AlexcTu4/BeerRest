@@ -11,47 +11,7 @@ class ContactsController extends Controller
 {
     public function index()
     {
-        return [
-            'info' => [
-                [
-                    'key' => 'id',
-                    'label'=> 'ID',
-                    'editable'=> false
-                ],
-                [
-                    'key' => 'first_name',
-                    'label'=> 'Имя',
-                    'editable'=> true
-                ],
-                [
-                    'key' => 'last_name',
-                    'label'=> 'Фамилия',
-                    'editable'=> true
-                ],
-                [
-                    'key' => 'patronymic',
-                    'label'=> 'Отчество',
-                    'editable'=> true
-                ],
-                [
-                    'key' => 'phone',
-                    'label'=> 'Телефон',
-                    'editable'=> true
-                ],
-                [
-                    'key' => 'company',
-                    'label'=> 'Компания',
-                    'editable'=> true
-                ],
-                [
-                    'key' => 'post',
-                    'label'=> 'Должность',
-                    'editable'=> true
-                ],
-            ],
-            'data' => Contacts::all()
-        ];
-
+        return Contacts::all();
     }
 
 
