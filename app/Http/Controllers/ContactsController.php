@@ -4,14 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Contacts;
 use App\Http\Requests\ContactsRequest;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class ContactsController extends Controller
 {
-    public function index()
+    public function index(ContactsRequest $request)
     {
-        return Contacts::all();
+        return DB::table('contacts')->paginate(10);
     }
 
 
@@ -23,9 +23,9 @@ class ContactsController extends Controller
         return $day;
     }
 
-    public function show(Contacts $crm)
+    public function show(Contacts $crm, string $string)
     {
-        return $game = Contacts::findOrFail($crm);
+        return $game = Contacts::search($string)->paginate(10);
     }
 
 
@@ -39,6 +39,13 @@ class ContactsController extends Controller
         return response()->json($game);
     }
 
+    public function search(ContactsRequest $request, $id)
+    {
+        $game = Contacts::search('test');
+        $game->save();
+        return response()->json($game);
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -48,6 +55,8 @@ class ContactsController extends Controller
     public function destroy(ContactsRequest $request, $id )
     {
         $game = Contacts::findOrFail($id);
-        if($game->delete()) return response(null, 204);
+        if($game->delete()){
+            return response(['result' => true], 204);
+        }
     }
 }
