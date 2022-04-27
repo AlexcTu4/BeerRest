@@ -11,7 +11,8 @@ class ContactsController extends Controller
 {
     public function index(ContactsRequest $request)
     {
-        return DB::table('contacts')->paginate(10);
+        return  DB::table('contacts')->paginate($request['per_page']??10);
+
     }
 
 
@@ -56,7 +57,7 @@ class ContactsController extends Controller
     {
         $game = Contacts::findOrFail($id);
         if($game->delete()){
-            return response(['result' => true], 204);
+            return response(['result'=>true]);
         }
     }
 }

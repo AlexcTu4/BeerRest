@@ -27,7 +27,8 @@ class ContactsRequest extends FormRequest
 
             'first_name' => 'required|string',
             'last_name' => 'required|string',
-            'email' => 'required|string',
+            'patronymic' => 'string|nullable',
+            'email' => 'required|email',
             'phone' => 'required|string',
             'company' => 'required|string',
             'post' => 'required|string',
@@ -36,7 +37,10 @@ class ContactsRequest extends FormRequest
         switch ($this->getMethod())
         {
             case 'GET' :
-                return ['data' => 'string'];
+                return [
+                        'page' => 'integer',
+                        'per_page' => 'integer',
+                    ];
             case 'POST':
                 return $rules;
             case 'PUT':
